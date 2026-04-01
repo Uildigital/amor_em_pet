@@ -1,11 +1,132 @@
-// Preloader
-window.addEventListener('load', () => {
+// =========================================
+// PREMIUM CURTAIN INTRO
+// =========================================
+(function () {
     const preloader = document.getElementById('preloader');
+    const splashLogo = document.getElementById('splashLogo');
+    const splashPct  = document.getElementById('splashPct');
+    const splashNum  = document.getElementById('splashNum');
+    const splashFill = document.getElementById('splashFill');
     if (!preloader) return;
-    setTimeout(() => {
-        preloader.classList.add('hidden');
-    }, 1200);
-});
+
+    // --- Paw particles ---
+    const PAWS = ['🐾'];
+    const pawsContainer = [];
+    for (let i = 0; i < 12; i++) {
+        const paw = document.createElement('span');
+        paw.className = 'paw-particle';
+        paw.textContent = PAWS[0];
+        const x = 10 + Math.random() * 80;
+        const y = 15 + Math.random() * 70;
+        const dur = (2 + Math.random() * 2).toFixed(2);
+        const delay = (Math.random() * 2.5).toFixed(2);
+        const rot = (Math.random() * 60 - 30).toFixed(0);
+        paw.style.cssText = `left:${x}%;top:${y}%;--dur:${dur}s;--delay:${delay}s;--rot:${rot}deg;`;
+        document.body.appendChild(paw);
+        pawsContainer.push(paw);
+    }
+
+    // --- Counter animation ---
+    let count = 0;
+    const total = 100;
+    const duration = 2000; // ms
+    const interval = duration / total;
+    const counter = setInterval(() => {
+        count++;
+        if (splashNum)  splashNum.textContent  = count;
+        if (splashFill) splashFill.style.width = count + '%';
+        if (count >= total) clearInterval(counter);
+    }, interval);
+
+    // Fire exit after ~2.3s (counter done + small pause)
+    setTimeout(exitIntro, 2400);
+
+    // Fallback: fire on window load if page loads fast
+    window.addEventListener('load', () => {
+        if (count < total) {
+            clearInterval(counter);
+            if (splashNum)  splashNum.textContent  = 100;
+            if (splashFill) splashFill.style.width = '100%';
+        }
+        setTimeout(exitIntro, Math.max(0, 2400 - performance.now()));
+    }, { once: true });
+
+    // --- Exposed Trigger for Page Content ---
+    window.addEventListener('preloader_finished', () => {
+        initHeroAnimations();
+    });
+    
+    function exitIntro() {
+        preloader.classList.add('exit');
+        pawsContainer.forEach(p => p.style.opacity = '0');
+        setTimeout(() => {
+            preloader.classList.add('gone');
+            splashLogo?.remove();
+            splashPct?.remove();
+            pawsContainer.forEach(p => p.remove());
+            window.dispatchEvent(new CustomEvent('preloader_finished'));
+        }, 1200);
+    }
+}());
+
+// =========================================
+// CINEMATIC HERO ANIMATIONS (GSAP)
+// =========================================
+function initHeroAnimations() {
+    if (typeof gsap === 'undefined') return;
+
+    const tl = gsap.timeline({
+        defaults: { ease: "power4.out", duration: 1.2 }
+    });
+
+    // 1. Bg Zoom Out
+    tl.to(".hero-main-bg", {
+        scale: 1,
+        duration: 3,
+        ease: "power2.out"
+    }, 0);
+
+    // 2. Eyebrow
+    tl.to(".hero-eyebrow-v2", {
+        opacity: 1,
+        y: 0,
+        duration: 1
+    }, 0.5);
+
+    // 3. Title Lines (Staggered)
+    tl.to(".title-line", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+    }, "-=0.8");
+
+    // 4. Description
+    tl.to(".hero-desc-v2", {
+        opacity: 1,
+        y: 0,
+    }, "-=0.9");
+
+    // 5. Buttons & Stats
+    tl.to([".hero-btns-v2", ".hero-stats-glass"], {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2
+    }, "-=0.7");
+
+    // 6. Header Slide Down
+    tl.fromTo("#main-header", 
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 }, 
+        "-=1"
+    );
+
+    // 7. Scroll Indicator
+    tl.to(".scroll-down", {
+        opacity: 1,
+        duration: 1
+    }, "-=0.5");
+}
+
 
 // Mobile Drawer
 const menuToggle = document.querySelector('.mobile-menu-toggle');
@@ -61,13 +182,31 @@ document.querySelectorAll('.breed-card, .about-img, .about-text, .section-header
     observer.observe(el);
 });
 
-// Subtle Parallax on Hero Image (mouse movement)
-const heroImg = document.querySelector('.image-frame img');
-if (heroImg && window.innerWidth > 1024) {
+// Subtle Parallax on Hero (mouse movement)
+const heroBg = document.querySelector('.hero-main-bg');
+const heroContent = document.querySelector('.hero-content-v2');
+
+if (heroBg && window.innerWidth > 1024) {
     window.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 12;
-        const y = (e.clientY / window.innerHeight - 0.5) * 8;
-        heroImg.style.transform = `translate(${x}px, ${y}px) scale(1.04)`;
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 15;
+        
+        // Move background slightly opposite to mouse
+        gsap.to(heroBg, {
+            x: -x * 0.5,
+            y: -y * 0.5,
+            rotation: x * 0.01,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        // Move content slightly with mouse
+        gsap.to(heroContent, {
+            x: x * 0.3,
+            y: y * 0.3,
+            duration: 1.5,
+            ease: "power2.out"
+        });
     }, { passive: true });
 }
 

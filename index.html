@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amor em Pet — Filhotes de Raça com Pedigree</title>
-    <meta name="description" content="Filhotes de raça criados com amor, saúde garantida e pedigree. Encontre o companheiro perfeito para a sua família na Amor em Pet.">
-    
+    <meta name="description"
+        content="Filhotes de raça criados com amor, saúde garantida e pedigree. Encontre o companheiro perfeito para a sua família na Amor em Pet.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Poppins:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Poppins:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
+    <!-- Scripts: GSAP for Cinematic Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
 
-    <!-- Preloader -->
+    <!-- Preloader Premium -->
     <div id="preloader">
-        <div class="loader-content">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+        
+        <div class="splash-logo" id="splashLogo">
             <img src="https://amorempet.com.br/wp-content/uploads/2021/12/logo.jpg" alt="Logo Amor em Pet">
-            <div class="loader-bar"></div>
+            <div class="splash-brand">AMOR EM <em>PET</em></div>
+        </div>
+
+        <div class="splash-pct" id="splashPct">
+            <div class="splash-pct-number"><span id="splashNum">0</span></div>
+            <div class="splash-pct-bar">
+                <div class="splash-pct-fill" id="splashFill"></div>
+            </div>
+            <span>CARREGANDO</span>
         </div>
     </div>
 
@@ -35,8 +54,10 @@
                 <li><a href="#sobre">Sobre Nós</a></li>
             </ul>
             <div class="header-social">
-                <a href="https://www.instagram.com/amor.em.pet/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/amor.em.pet/" target="_blank" class="social-icon"
+                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                    class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
             <button class="mobile-menu-toggle" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -45,50 +66,61 @@
     </header>
 
     <main>
-        <!-- Hero -->
+        <!-- Hero Imersivo -->
         <section id="inicio">
-            <div class="container hero-content">
-                <div class="hero-image">
-                    <div class="image-frame">
-                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Filhote Golden Retriever">
-                        <div class="hero-badge">
-                            <div class="hero-badge-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="hero-badge-text">
-                                <strong>Saúde Garantida</strong>
-                                <span>Cert. Veterinária Inclusa</span>
-                            </div>
-                        </div>
+            <div class="hero-bg-wrapper">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=90"
+                    alt="Background Filhote" class="hero-main-bg">
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="container hero-content-v2">
+                <div class="hero-text-center">
+                    <div class="hero-eyebrow-v2">
+                        <span class="line"></span>
+                        <span class="text">Cães de Alto Padrão &amp; Procedência</span>
+                        <span class="line"></span>
                     </div>
-                </div>
-                <div class="hero-text">
-                    <div class="hero-eyebrow">
-                        <span>Cães de Alto Padrão &amp; Procedência</span>
-                    </div>
-                    <h1>O filhote dos seus sonhos, com a <em>segurança</em> que você merece.</h1>
-                    <p>Mais do que vender filhotes, nós entregamos alegria. Cães de raça pura com genética impecável, garantia de saúde, e suporte especializado para a adaptação no seu lar.</p>
-                    <div class="hero-btns">
-                        <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="btn btn-gold" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+                    
+                    <h1 class="hero-title-v2">
+                        <span class="title-line">O filhote dos <em>seus sonhos</em>,</span>
+                        <span class="title-line">com a segurança que merece.</span>
+                    </h1>
+                    
+                    <p class="hero-desc-v2">Mais do que vender filhotes, nós entregamos novos membros para a sua família. Raça pura, genética impecável e suporte vitalício.</p>
+                    
+                    <div class="hero-btns-v2">
+                        <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                            class="btn btn-gold-v2" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Reservar um Filhote
                         </a>
-                        <a href="#racas" class="btn btn-ghost">Ver Raças</a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Famílias felizes</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">8+</span>
-                            <span class="stat-label">Raças disponíveis</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Com pedigree</span>
-                        </div>
+                        <a href="#racas" class="btn btn-glass">Ver Linhagens Especiais</a>
                     </div>
                 </div>
+
+                <!-- Floating Stats Card (Glassmorphism) -->
+                <div class="hero-stats-glass">
+                    <div class="stat-item-v2">
+                        <span class="stat-num-v2">500+</span>
+                        <span class="stat-txt-v2">Famílias</span>
+                    </div>
+                    <div class="stat-sep"></div>
+                    <div class="stat-item-v2">
+                        <span class="stat-num-v2">8+</span>
+                        <span class="stat-txt-v2">Raças</span>
+                    </div>
+                    <div class="stat-sep"></div>
+                    <div class="stat-item-v2">
+                        <span class="stat-num-v2">100%</span>
+                        <span class="stat-txt-v2">Pedigree</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-down">
+                <span class="mouse"></span>
+                <span class="arrow"></span>
             </div>
         </section>
 
@@ -98,7 +130,8 @@
                 <div class="section-header center">
                     <span class="subtitle">Linhagens Selecionadas</span>
                     <h2>Escolha o companheiro ideal para a sua casa</h2>
-                    <p>Qual a sua preferência? Conheça nossas raças exclusivas, cuidadosamente selecionadas para garantir um temperamento equilibrado e uma saúde estrutural perfeita.</p>
+                    <p>Qual a sua preferência? Conheça nossas raças exclusivas, cuidadosamente selecionadas para
+                        garantir um temperamento equilibrado e uma saúde estrutural perfeita.</p>
                 </div>
                 <div class="breed-grid">
                     <div class="breed-card">
@@ -108,17 +141,20 @@
                         <div class="card-content">
                             <h3>Shih Tzu</h3>
                             <p>O companheiro perfeito para apartamentos. Dócil, carinhoso e cheio de personalidade.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="breed-card">
                         <div class="card-img">
-                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/Lulu1.jpg" alt="Lulu da Pomerânia">
+                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/Lulu1.jpg"
+                                alt="Lulu da Pomerânia">
                         </div>
                         <div class="card-content">
                             <h3>Lulu da Pomerânia</h3>
                             <p>Pequeno no tamanho, enorme no charme. O queridinho das famílias modernas.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="breed-card">
@@ -128,27 +164,36 @@
                         <div class="card-content">
                             <h3>Poodle</h3>
                             <p>Inteligência e elegância incomparáveis. Ideal para quem busca um pet ativo e esperto.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="breed-card">
                         <div class="card-img">
-                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/rottweiler1.jpg" alt="Rottweiler">
+                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/rottweiler1.jpg"
+                                alt="Rottweiler">
                         </div>
                         <div class="card-content">
                             <h3>Rottweiler</h3>
-                            <p>Força, lealdade inabalável e instinto de proteção. O guardião premium ideal para o seu patrimônio e família.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Consultar Ninhadas <i class="fas fa-arrow-right"></i></a>
+                            <p>Força, lealdade inabalável e instinto de proteção. O guardião premium ideal para o seu
+                                patrimônio e família.</p>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Consultar Ninhadas <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="breed-card">
                         <div class="card-img">
-                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/Pastor-Alemao.jpg" alt="Pastor Alemão">
+                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/Pastor-Alemao.jpg"
+                                alt="Pastor Alemão">
                         </div>
                         <div class="card-content">
                             <h3>Pastor Alemão</h3>
-                            <p>Inteligência suprema e coragem. Um ícone de versatilidade, pronto para ser o cão de guarda e de companhia perfeito.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Consultar Ninhadas <i class="fas fa-arrow-right"></i></a>
+                            <p>Inteligência suprema e coragem. Um ícone de versatilidade, pronto para ser o cão de
+                                guarda e de companhia perfeito.</p>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Consultar Ninhadas <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="breed-card">
@@ -157,8 +202,11 @@
                         </div>
                         <div class="card-content">
                             <h3>Pug</h3>
-                            <p>Bem-humorado e extremamente apegado ao dono. O cão de apartamento ideal para quem odeia monotonia.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Consultar Ninhadas <i class="fas fa-arrow-right"></i></a>
+                            <p>Bem-humorado e extremamente apegado ao dono. O cão de apartamento ideal para quem odeia
+                                monotonia.</p>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Consultar Ninhadas <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="breed-card">
@@ -168,17 +216,20 @@
                         <div class="card-content">
                             <h3>Pinscher</h3>
                             <p>Pequeno, mas com uma personalidade enorme. Alerta, corajoso e muito carinhoso.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="breed-card">
                         <div class="card-img">
-                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/shitzu.jpg" alt="Shih Tzu Mini">
+                            <img src="https://amorempet.com.br/wp-content/uploads/2024/01/shitzu.jpg"
+                                alt="Shih Tzu Mini">
                         </div>
                         <div class="card-content">
                             <h3>Shih Tzu Mini</h3>
                             <p>A versão ainda mais fofa do nosso queridinho. Pelagem luxuosa e temperamento doce.</p>
-                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                                class="link-btn" target="_blank">Tenho Interesse <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -191,23 +242,27 @@
                 <div class="section-header center">
                     <span class="subtitle">O Padrão Amor em Pet</span>
                     <h2>Por que somos a escolha das famílias exigentes?</h2>
-                    <p>Sabemos que comprar um filhote gera inseguranças. Trabalhamos incansavelmente para que sua única preocupação seja escolher o nome do seu novo membro da família.</p>
+                    <p>Sabemos que comprar um filhote gera inseguranças. Trabalhamos incansavelmente para que sua única
+                        preocupação seja escolher o nome do seu novo membro da família.</p>
                 </div>
                 <div class="values-grid">
                     <div class="value-item">
                         <div class="value-icon"><i class="fas fa-certificate"></i></div>
                         <h3>Pedigree Certificado</h3>
-                        <p>Genética chancelada. Garantimos raça pura, livre de misturas, entregando a árvore genealógica documentada.</p>
+                        <p>Genética chancelada. Garantimos raça pura, livre de misturas, entregando a árvore genealógica
+                            documentada.</p>
                     </div>
                     <div class="value-item">
                         <div class="value-icon"><i class="fas fa-stethoscope"></i></div>
                         <h3>Garantia de Saúde Completa</h3>
-                        <p>Laudo veterinário impecável. Todos os bebês saem vacinados com a melhor marca importada e com controle de vermes e parasitas.</p>
+                        <p>Laudo veterinário impecável. Todos os bebês saem vacinados com a melhor marca importada e com
+                            controle de vermes e parasitas.</p>
                     </div>
                     <div class="value-item">
                         <div class="value-icon"><i class="fas fa-heart"></i></div>
                         <h3>Socialização Premium</h3>
-                        <p>Diga adeus à baia. Nossos filhotes crescem integrados à família, resultando em animais mais dóceis, sociáveis e emocionalmente saudáveis para o seu lar.</p>
+                        <p>Diga adeus à baia. Nossos filhotes crescem integrados à família, resultando em animais mais
+                            dóceis, sociáveis e emocionalmente saudáveis para o seu lar.</p>
                     </div>
                 </div>
             </div>
@@ -217,12 +272,16 @@
         <section id="sobre" class="section-padding">
             <div class="container about-wrapper">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Cuidado com os filhotes">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+                        alt="Cuidado com os filhotes">
                 </div>
                 <div class="about-text">
                     <span class="subtitle">Compre com Segurança Absoluta</span>
                     <h2>Uma nova vida, com transparência e responsabilidade.</h2>
-                    <p>Sabemos do medo de golpistas e canis exploradores. A <strong>Amor em Pet</strong> nasceu exatamente do desejo contrariar esse mercado: somos dedicados à pureza das raças e ao bem-estar animal 24 horas por dia. Nossa maior satisfação é ver a felicidade no rosto da sua família recebendo em casa um bebê peludo com a saúde de ferro confirmada por atestado.</p>
+                    <p>Sabemos do medo de golpistas e canis exploradores. A <strong>Amor em Pet</strong> nasceu
+                        exatamente do desejo contrariar esse mercado: somos dedicados à pureza das raças e ao bem-estar
+                        animal 24 horas por dia. Nossa maior satisfação é ver a felicidade no rosto da sua família
+                        recebendo em casa um bebê peludo com a saúde de ferro confirmada por atestado.</p>
                     <ul class="features-list">
                         <li><i class="fas fa-check"></i> Acompanhamento Veterinário Regular</li>
                         <li><i class="fas fa-check"></i> Filhotes com Pedigree Certificado</li>
@@ -230,7 +289,8 @@
                         <li><i class="fas fa-check"></i> Suporte Pós-Venda Permanente</li>
                         <li><i class="fas fa-check"></i> Parcelamento em até 12x no cartão</li>
                     </ul>
-                    <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="btn btn-orange" target="_blank">
+                    <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                        class="btn btn-orange" target="_blank">
                         <i class="fab fa-whatsapp"></i> Falar com um Especialista Agora
                     </a>
                 </div>
@@ -242,11 +302,14 @@
     <footer>
         <div class="container footer-grid">
             <div class="footer-info">
-                <img src="https://amorempet.com.br/wp-content/uploads/2021/12/logo.jpg" alt="Amor em Pet" class="footer-logo">
+                <img src="https://amorempet.com.br/wp-content/uploads/2021/12/logo.jpg" alt="Amor em Pet"
+                    class="footer-logo">
                 <p>O seu novo melhor amigo está te esperando. Entre em contato e agende uma visita sem compromisso.</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/amor.em.pet/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/amor.em.pet/" target="_blank" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                        aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="footer-links">
@@ -262,7 +325,8 @@
                 <h4>Contato</h4>
                 <ul>
                     <li>
-                        <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." target="_blank">
+                        <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                            target="_blank">
                             <i class="fab fa-whatsapp"></i> (81) 99669-5406
                         </a>
                     </li>
@@ -271,12 +335,14 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Amor em Pet. Todos os direitos reservados. Feito com <i class="fas fa-heart" style="color:#F39200;"></i></p>
+            <p>&copy; 2024 Amor em Pet. Todos os direitos reservados. Feito com <i class="fas fa-heart"
+                    style="color:#F39200;"></i></p>
         </div>
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+    <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+        class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="tooltip">Fale Conosco</span>
     </a>
@@ -293,17 +359,21 @@
             <a href="#sobre" class="drawer-link">Sobre Nós</a>
         </nav>
         <div class="mobile-drawer-cta">
-            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." class="btn btn-gold drawer-link" target="_blank">
+            <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                class="btn btn-gold drawer-link" target="_blank">
                 <i class="fab fa-whatsapp"></i> Falar no WhatsApp
             </a>
             <a href="#racas" class="btn btn-ghost drawer-link">Ver Raças</a>
             <div class="mobile-social-links">
-                <a href="https://www.instagram.com/amor.em.pet/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote." aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/amor.em.pet/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote."
+                    aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </div>
 
     <script type="module" src="/main.js"></script>
 </body>
+
 </html>
