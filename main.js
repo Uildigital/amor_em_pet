@@ -177,7 +177,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.breed-card, .about-img, .about-text, .section-header, .value-item, .hero-stats').forEach(el => {
+document.querySelectorAll('.about-img, .about-text, .section-header, .value-item, .hero-stats').forEach(el => {
     el.classList.add('reveal-init');
     observer.observe(el);
 });
@@ -227,3 +227,139 @@ window.addEventListener('scroll', () => {
             : '';
     });
 }, { passive: true });
+
+// =========================================
+// BREED CARDS — Shuffle no load, 8 de 10
+// Sem rotação automática: melhor UX de venda
+// Animação premium de entrada em cascata (stagger)
+// =========================================
+(function initBreedCards() {
+    const grid = document.getElementById('breedGrid');
+    if (!grid) return;
+
+    const WA_BASE = 'https://wa.me/5581996695406?text=Ol%C3%A1%2C%20Amor%20em%20Pet%21%20Vim%20pelo%20site%20e%20gostaria%20de%20comprar%20um%20filhote%20de%20';
+
+    // Catálogo completo — imagem + nome + descrição SEMPRE juntos
+    const ALL_BREEDS = [
+        {
+            name: 'Shih Tzu',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/SHIHTZU.webp',
+            desc: 'Rei dos apartamentos. Pelagem sedosa, temperamento dócil e um jeito único de encher qualquer ambiente de amor.',
+            slug: 'Shih%20Tzu'
+        },
+        {
+            name: 'Lulu da Pomerânia',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/lulu.webp',
+            desc: 'Minúsculo e majestoso. Com pelagem volumosa e olhos vivos, o Lulu conquista corações onde quer que vá.',
+            slug: 'Lulu%20da%20Pomer%C3%A2nia'
+        },
+        {
+            name: 'Pug',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/pug.webp',
+            desc: 'Bem-humorado e incrivelmente apegado. O Pug transforma qualquer dia comum em uma aventura cheia de risos.',
+            slug: 'Pug'
+        },
+        {
+            name: 'Bulldog Francês',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/bulldog-frances.webp',
+            desc: 'Estilo, personalidade e afeto em dose dupla. O Frenchie é elegante, brincalhão e perfeito para a vida urbana.',
+            slug: 'Bulldog%20Franc%C3%AAs'
+        },
+        {
+            name: 'Husky Siberiano',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/husky-siberiano.webp',
+            desc: 'Olhos hipnóticos e espírito livre. O Husky reúne beleza selvagem, inteligência e lealdade incomparáveis.',
+            slug: 'Husky%20Siberiano'
+        },
+        {
+            name: 'Pinscher Miniatura',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/miniatura-picher.webp',
+            desc: 'Pequeno, veloz e cheio de energia. O Pinscher Mini é guardião fiel do lar com um coração grandioso.',
+            slug: 'Pinscher%20Miniatura'
+        },
+        {
+            name: 'Poodle Toy',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/poodle-toy.webp',
+            desc: 'O gênio da raça em versão bolso. Inteligentíssimo, hipoalergênico e com charme irresistível.',
+            slug: 'Poodle%20Toy'
+        },
+        {
+            name: 'Lhasa Apso',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/lhasa-apso.webp',
+            desc: 'Nobre e distinto. Com pelagem majestosa e personalidade independente, o aristocrata dos cães de companhia.',
+            slug: 'Lhasa%20Apso'
+        },
+        {
+            name: 'Dachshund Salsicha',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/daschshund-Salsicha.webp',
+            desc: 'Comprido, corajoso e cheio de curiosidade. O Salsicha tem personalidade de gigante e amor interminável.',
+            slug: 'Dachshund%20Salsicha'
+        },
+        {
+            name: 'Yorkshire Terrier',
+            img:  'https://raceroi.com.br/wp-content/uploads/2026/04/yorkshire.webp',
+            desc: 'Pequeno com alma de dono. Une elegância de passarela com determinação e um carinho que transborda a cada abraço.',
+            slug: 'Yorkshire%20Terrier'
+        }
+    ];
+
+    // Fisher-Yates shuffle — embaralha no load, cada visita tem uma ordem diferente
+    function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    // Gera HTML do card — imagem + nome + descrição sempre da mesma raça
+    function cardHTML(breed) {
+        return `<div class="breed-card">
+            <div class="card-img">
+                <img src="${breed.img}" alt="${breed.name}" loading="lazy">
+            </div>
+            <div class="card-content">
+                <h3>${breed.name}</h3>
+                <p>${breed.desc}</p>
+                <a href="${WA_BASE}${breed.slug}." class="link-btn" target="_blank">
+                    Tenho Interesse <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>`;
+    }
+
+    // Pega 8 das 10 raças em ordem aleatória
+    const displayed = shuffle(ALL_BREEDS).slice(0, 8);
+    grid.innerHTML = displayed.map(cardHTML).join('');
+
+    // --- Animação de entrada em cascata com IntersectionObserver ---
+    // Cada card entra individualmente quando a seção entra na viewport
+    const STAGGER_MS = 80; // delay entre cada card
+
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            // Revela todos os cards do grid em cascata
+            const cards = grid.querySelectorAll('.breed-card');
+            cards.forEach((card, i) => {
+                // Se já está visível, ignora
+                if (card.classList.contains('card-visible')) return;
+                setTimeout(() => {
+                    card.classList.add('card-visible');
+                }, i * STAGGER_MS);
+            });
+
+            // Para de observar depois da primeira vez
+            cardObserver.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.08,  // dispara quando 8% do grid estiver visível
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    cardObserver.observe(grid);
+}());
+
+
