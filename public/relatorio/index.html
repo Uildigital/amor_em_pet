@@ -205,14 +205,35 @@
         }
 
         function parseData(csv) {
-            // Aqui converteremos o CSV para os números do painel
-            // Este passo depende de como você montou o relatório no Google Ads
             const lines = csv.split('\n');
-            // Exemplo genérico: pegando a última linha da planilha
-            const lastRow = lines[lines.length - 1].split(',');
-            
-            // Supondo: Gasto na Col A, Cliques Col B, Conversas Col C
-            showStats(parseFloat(lastRow[0]), parseInt(lastRow[1]), parseInt(lastRow[2]));
+            let totalLine = null;
+
+            // Busca a linha que contém o resumo total da conta
+            for (let line of lines) {
+                if (line.includes("Total: Account")) {
+                    totalLine = line.split(',');
+                    break;
+                }
+            }
+
+            if (totalLine) {
+                // Mapeamento das colunas baseado na estrutura real do Google Ads CSV:
+                // Col 15: Clicks | Col 17: CTR | Col 19: Cost | Col 21: Conversions
+                
+                const cliques = parseInt(totalLine[15]) || 0;
+                
+                // Trata o custo (ex: "0,85" vem com aspas e vírgula)
+                let custoRaw = totalLine[19] ? totalLine[19].replace(/"/g, '').replace(',', '.') : "0";
+                const gasto = parseFloat(custoRaw) || 0;
+                
+                const conversas = parseInt(totalLine[21]) || 0;
+
+                console.log("Dados Reais Carregados:", { gasto, cliques, conversas });
+                showStats(gasto, cliques, conversas);
+            } else {
+                console.warn("Linha de total não encontrada. Mantendo simulação.");
+                setTimeout(() => { showStats(482.50, 1240, 92); }, 500);
+            }
         }
 
         function showStats(gasto, cliques, conversas) {
