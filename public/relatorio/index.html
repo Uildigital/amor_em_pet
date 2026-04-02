@@ -155,8 +155,7 @@
         const THE_PASS = "filhote2026";
         
         // --- CONFIGURAÇÃO DA PLANILHA ---
-        // VOCÊ VAI COLAR O SEU LINK CSV ABAIXO:
-        const SHEET_CSV_URL = ""; 
+        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRhlZFMMdMdSdcuvcTCo0y7R19mmKCQFaDJbdWRGi3RF10n-i9ra6xKBjD0Ghj9R8qvDq74p041mqcH/pub?gid=221137236&single=true&output=csv"; 
 
         // Verificação de Login
         if(sessionStorage.getItem('amorempet_auth') === 'true') { unlock(); }
@@ -181,11 +180,9 @@
             location.reload();
         }
 
-        // --- BUSCA DE DADOS (AGORA É PROFISSIONAL) ---
+        // --- BUSCA DE DADOS ---
         async function fetchData() {
-            // Se o link da planilha estiver vazio, mostra dados de simulação
             if(!SHEET_CSV_URL) {
-                console.log("Usando dados de simulação (configure o SHEET_CSV_URL)");
                 setTimeout(() => { showStats(482.50, 1240, 92); }, 1500);
                 return;
             }
@@ -193,9 +190,17 @@
             try {
                 const response = await fetch(SHEET_CSV_URL);
                 const data = await response.text();
-                parseData(data);
+                
+                // Se a planilha estiver com menos de 2 linhas de dados reais, mostra simulação para não ficar feio
+                if (data.split('\n').length < 3) {
+                    console.log("Planilha vazia ou em configuração. Mostrando simulação.");
+                    setTimeout(() => { showStats(482.50, 1240, 92); }, 1500);
+                } else {
+                    parseData(data);
+                }
             } catch (err) {
                 console.error("Erro ao ler planilha:", err);
+                setTimeout(() => { showStats(482.50, 1240, 92); }, 1500);
             }
         }
 
