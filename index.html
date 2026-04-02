@@ -18,6 +18,35 @@
     <!-- Scripts: GSAP for Cinematic Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Google Ads Global Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10864545977"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-10864545977');
+    </script>
+
+    <!-- WhatsApp Conversion Tracking -->
+    <script>
+      function trackWhatsAppConversion() {
+        if(typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+              'send_to': 'AW-10864545977/-OLtCNPLrZQcELmhz7wo'
+          });
+          console.log("Conversão enviada com sucesso!");
+        }
+      }
+      
+      // Captura cliques em qualquer link de WhatsApp (dinâmico ou estático)
+      document.addEventListener('click', function(e) {
+        const waLink = e.target.closest('a[href*="wa.me"]');
+        if (waLink) {
+          trackWhatsAppConversion();
+        }
+      });
+    </script>
 </head>
 
 <body>
