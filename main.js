@@ -243,61 +243,61 @@ window.addEventListener('scroll', () => {
     const ALL_BREEDS = [
         {
             name: 'Shih Tzu',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/SHIHTZU.webp',
+            img:  '/imagens/SHIHTZU.webp',
             desc: 'Rei dos apartamentos. Pelagem sedosa, temperamento dócil e um jeito único de encher qualquer ambiente de amor.',
             slug: 'Shih%20Tzu'
         },
         {
             name: 'Lulu da Pomerânia',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/lulu.webp',
+            img:  '/imagens/lulu.webp',
             desc: 'Minúsculo e majestoso. Com pelagem volumosa e olhos vivos, o Lulu conquista corações onde quer que vá.',
             slug: 'Lulu%20da%20Pomer%C3%A2nia'
         },
         {
             name: 'Pug',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/pug.webp',
+            img:  '/imagens/pug.webp',
             desc: 'Bem-humorado e incrivelmente apegado. O Pug transforma qualquer dia comum em uma aventura cheia de risos.',
             slug: 'Pug'
         },
         {
             name: 'Bulldog Francês',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/bulldog-frances.webp',
+            img:  '/imagens/bulldog-frances.webp',
             desc: 'Estilo, personalidade e afeto em dose dupla. O Frenchie é elegante, brincalhão e perfeito para a vida urbana.',
             slug: 'Bulldog%20Franc%C3%AAs'
         },
         {
             name: 'Husky Siberiano',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/husky-siberiano.webp',
+            img:  '/imagens/husky-siberiano.webp',
             desc: 'Olhos hipnóticos e espírito livre. O Husky reúne beleza selvagem, inteligência e lealdade incomparáveis.',
             slug: 'Husky%20Siberiano'
         },
         {
             name: 'Pinscher Miniatura',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/miniatura-picher.webp',
+            img:  '/imagens/miniatura-picher.webp',
             desc: 'Pequeno, veloz e cheio de energia. O Pinscher Mini é guardião fiel do lar com um coração grandioso.',
             slug: 'Pinscher%20Miniatura'
         },
         {
             name: 'Poodle Toy',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/poodle-toy.webp',
+            img:  '/imagens/poodle-toy.webp',
             desc: 'O gênio da raça em versão bolso. Inteligentíssimo, hipoalergênico e com charme irresistível.',
             slug: 'Poodle%20Toy'
         },
         {
             name: 'Lhasa Apso',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/lhasa-apso.webp',
+            img:  '/imagens/lhasa-apso.webp',
             desc: 'Nobre e distinto. Com pelagem majestosa e personalidade independente, o aristocrata dos cães de companhia.',
             slug: 'Lhasa%20Apso'
         },
         {
             name: 'Dachshund Salsicha',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/daschshund-Salsicha.webp',
+            img:  '/imagens/daschshund-Salsicha.webp',
             desc: 'Comprido, corajoso e cheio de curiosidade. O Salsicha tem personalidade de gigante e amor interminável.',
             slug: 'Dachshund%20Salsicha'
         },
         {
             name: 'Yorkshire Terrier',
-            img:  'https://www.amorempet.com.br/wp-content/uploads/2026/04/yorkshire.webp',
+            img:  '/imagens/yorkshire.webp',
             desc: 'Pequeno com alma de dono. Une elegância de passarela com determinação e um carinho que transborda a cada abraço.',
             slug: 'Yorkshire%20Terrier'
         }
